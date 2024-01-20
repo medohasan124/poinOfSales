@@ -14,8 +14,8 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
-              {{ LaravelLocalization::getCurrentLocaleName() }}
             </ol>
+
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -38,34 +38,42 @@
 
             </div>
                 <div class="card-body">
-                    <form action='{{url("users")}}' method='POST'>
+                    <form action='{{route("users.store")}}' method='POST'>
                         {{ csrf_field() }}
                         <div class='row'>
                             <div class='col-4'>
                                 <label>@lang('Name')</label>
-                                <input type='text' placeholder='name' name='name' class='form-control'>
+                                <input type='text' placeholder='name' value='{{old('name')}}' name='name' class='form-control'>
                             </div>
 
                             <div class='col-4'>
                                 <label>@lang('Email')</label>
-                                <input type='Email'  placeholder='email' name='email'  class='form-control'>
+                                <input type='Email'  placeholder='email' value='{{old('email')}}' name='email'  class='form-control'>
                             </div>
                             <div class='col-4'>
                                 <label>@lang('Mobile')</label>
-                                <input type='number' placeholder='mobile' class='form-control' name='mobile'>
+                                <input type='number' placeholder='mobile' value='{{old('mobile')}}' class='form-control' name='mobile'>
                             </div>
                             <div class='col-4'>
                                 <label>@lang('Password')</label>
-                                <input type='password'  placeholder='password' name='password'  class='form-control'>
+                                <input type='password'  placeholder='password' value='{{old('password')}}' name='password'  class='form-control'>
                             </div>
 
                             <div class='col-4'>
                                 <label>@lang('Role')</label>
-                                <select  class='form-control'  placeholder='role' name='role' >
-                                    <option class='d-none'>...</option>
+                                <select  class='form-control' name='role' selected=' {{old('role')}}'  placeholder='role' >
+                                    <option class='d-none' value='0'>...</option>
                                     <option>
                                     @foreach($role as $row)
-                                    <option value='{{$row->id}}'>{{$row->name}}</option>
+                                    <option
+                                    value='{{$row->id}}'
+                                    @if($row->id == old('role'))
+                                    selected
+                                    @endif
+                                    >
+
+                                        {{$row->name}}
+                                    </option>
                                     @endforeach
                                     </option>
                                 </select>

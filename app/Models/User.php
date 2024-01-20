@@ -1,22 +1,26 @@
 <?php
 
-namespace Modules\Users\app\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\database\Eloquent\Factories\HasFactory;
-use Modules\Users\Database\factories\UsersFactory;
-use Laratrust\Contracts\LaratrustUser;
-use Laratrust\Traits\HasRolesAndPermissions;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Users\Database\factories\UserFactory;
+
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Users extends Authenticatable
+use Laratrust\Contracts\LaratrustUser;
+use Laratrust\Traits\HasRolesAndPermissions;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements LaratrustUser
 {
-    use HasRolesAndPermissions;
+
     use HasApiTokens, HasFactory, Notifiable;
+    use HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +30,7 @@ class Users extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'mobile',
         'password',
     ];
 

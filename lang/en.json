@@ -4,6 +4,8 @@
     "A Timeout Occurred": "A Timeout Occurred",
     "Accept": "Accept",
     "Accepted": "Accepted",
+
+
     "Action": "Action",
     "Role": "Role",
     "Actions": "Actions",
@@ -15,8 +17,11 @@
     "Date": "Date",
     "Dash": "Dashboard",
     "addUser": "Add User",
-
     "Mobile": "Mobile",
+    "updateSuccess": "Add Success",
+
+
+
     "Agree": "Agree",
     "All rights reserved.": "All rights reserved.",
     "Already Reported": "Already Reported",
@@ -150,6 +155,7 @@
     "Request Timeout": "Request Timeout",
     "Reset Content": "Reset Content",
     "Reset Password": "Reset Password",
+    "addSuccess":"Add Success",
     "Reset Password Notification": "Reset Password Notification",
     "Restore": "Restore",
     "Restore :name": "Restore :name",

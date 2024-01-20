@@ -15,15 +15,9 @@
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
 
-              {{app()->getLocale()}}
-              @foreach($errors->all() as $err)
-                {{$err}}
-              @endforeach
-              <form action="{{route('test')}}" method='POST'>
-                {{csrf_field()}}
-                <input type='text' name='name'>
-                <input type='submit' value='submit' >
-              </form>
+
+
+             
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

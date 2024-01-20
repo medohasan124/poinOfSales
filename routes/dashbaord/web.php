@@ -26,8 +26,6 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
 
-        Route::resource('test', test::class);
-
         Route::get('/', function () {
 
             return view('dashboard.app');

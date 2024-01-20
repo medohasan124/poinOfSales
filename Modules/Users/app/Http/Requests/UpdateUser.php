@@ -3,9 +3,8 @@
 namespace Modules\Users\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Lang;
-use Modules\Users\app\Rules\UserRule ;
-class addUser extends FormRequest
+
+class updateUser extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,9 +13,9 @@ class addUser extends FormRequest
     {
         return [
             'name' =>'required' ,
-            'email' =>'required|email|unique:users,email' ,
+            'email' =>'required|email|unique:users,email,'.$this->route('user'),
             'password' =>'required|min:8' ,
-            'mobile' => 'required|unique:users,mobile'  ,
+            'mobile' => 'required|unique:users,mobile,'.$this->route('user')  ,
             'role' =>'required|numeric|not_in:0' ,
         ];
     }

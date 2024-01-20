@@ -28,7 +28,7 @@
               <h3 class="card-title">@lang('User')</h3>
 
               <a href='{{url('users/create')}}'><button class='btn btn-success'>@lang('addUser') <i class='fa fa-users'></i></button></a>
-                
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -54,15 +54,25 @@
                             <td>{{$row->mobile}}</td>
                             <td>
                                 @foreach ($row->roles as $role)
-                                {{ $role->name }}
+                                <span
+                                    @if($role->id == 1)
+                                        class="badge badge-primary"
+                                    @elseif($role->id == 2)
+                                        class="badge badge-success"
+                                    @else
+                                        class="badge badge-secondary"
+                                    @endif
+
+
+                                >{{ $role->name }}</span>
                                 @endforeach
                             </td>
 
                             <td>{{$row->updated_at}}</td>
 
                             <td>
-                                <button class='btn btn-primary'>@lang('Edit') <i class='fa fa-edit'></i></button>
-                                <button class='btn btn-danger'>@lang('Delete') <i class='fa fa-trash'></i></button>
+                                <a href='{{route("users.edit" ,$row->id)}}' class='btn btn-primary'>@lang('Edit') <i class='fa fa-edit'></i></a>
+                                <a href='{{route("users.destroy" ,$row->id)}}' class='btn btn-danger'>@lang('Delete') <i class='fa fa-trash'></i></a>
                             </td>
                         </tr>
                         @endforeach

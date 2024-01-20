@@ -4,11 +4,12 @@ namespace Modules\Users\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use Modules\Users\app\Models\Users ;
+use App\Models\User ;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Users\app\Http\Requests\addUser;
+use Modules\Users\app\Http\Requests\updateUser;
 use Symfony\Component\HttpFoundation\RedirectResponse as HttpFoundationRedirectResponse;
 
 class UserController extends Controller
@@ -18,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $Users = Users::all() ;
+        $Users = User::all() ;
 
         return view('users::index' , compact('Users'));
     }
@@ -28,9 +29,6 @@ class UserController extends Controller
      */
     public function create()
     {
-
-      
-
 
         $role = Role::all();
 
@@ -43,12 +41,21 @@ class UserController extends Controller
     public function store(addUser $q)
     {
 
-       // $data = $q->validated() ;
-
+        //get validation
        $data = $q->validated();
 
-        dd($data);
-       // Users::create($data);
+        //create User
+        $user = User::create($data);
+
+        //add Role
+        $role = Role::find($data['role']);
+        $user->addRole($role->name);
+
+        //make notify
+       notify()->success(__("addSuccess"));
+
+
+       return redirect()->back() ;
     }
 
     /**
@@ -64,15 +71,39 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('users::edit');
+        $data = User::find($id);
+        $role = Role::all();
+        return view('users::edit' ,compact('data' , 'role'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(updateUser $q, $id)
     {
-        //
+
+
+
+        $user = User::findOrFail($id);
+
+
+
+        $user->name = $q->name ;
+        $user->email = $q->email ;
+        $user->password = $q->password ;
+        $user->mobile = $q->mobile ;
+        $user->save() ;
+
+        //update Role
+        $user->syncRoles([$q->role]);
+        // $role = Role::find($q->role);
+        // $user->addRole($role->name);
+
+         //update notify
+       notify()->success(__("updateSuccess"));
+
+
+       return redirect()->back() ;
     }
 
     /**

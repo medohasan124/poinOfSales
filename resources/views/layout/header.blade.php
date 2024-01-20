@@ -26,14 +26,14 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{asset('ar/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
-
-
+{{-- notify css --}}
+  @notifyCss
   <?php
     $langType = Lang::getLocale(); // Retrieves the current language type
 
 
   ?>
-    @if($langType == 'ar')
+    @if($langType == 'arr' || $langType == 'ur')
     <!-- Bootstrap 4 RTL -->
   <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
   <!-- Custom style for RTL -->
@@ -47,3 +47,5 @@
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
+
+

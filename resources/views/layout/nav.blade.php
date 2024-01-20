@@ -233,4 +233,6 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+
+    <x-notify::notify />
   </aside>

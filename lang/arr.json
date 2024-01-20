@@ -5,6 +5,9 @@
     "Accept": "موافقة",
     "Accepted": "تمت الموافقة",
     "Action": "الإجراء",
+
+
+
     "Actions": "الإجراءات",
     "Add": "إضافة",
     "Password": "كلمه السر",
@@ -15,8 +18,13 @@
     "Date": "التاريخ",
     "Mobile": "الجوال",
     "required": "هذا الحقل مطلوب",
+    "addSuccess":"تم الاضافه بنجاح",
     "Dash": "الرئيسة",
     "addUser": "إضافه عضو",
+    "updateSuccess": "تم الاضافه بنجاح",
+
+
+
     "Agree": "موافقة",
     "All rights reserved.": "جميع الحقوق محفوظة.",
     "Already Reported": "تم التبليغ مسبقاً",

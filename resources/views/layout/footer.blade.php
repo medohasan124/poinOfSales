@@ -14,6 +14,8 @@
 </div>
 <!-- ./wrapper -->
 
+
+
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -50,8 +52,11 @@
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 
+{{-- notify js --}}
 
 
+
+@notifyJs
   @stack('js')
 </body>
 </html>
