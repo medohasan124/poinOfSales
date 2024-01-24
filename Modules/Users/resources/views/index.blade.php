@@ -71,11 +71,30 @@
                             <td>{{$row->updated_at}}</td>
 
                             <td>
-                                <a href='{{route("users.edit" ,$row->id)}}' class='btn btn-primary'>@lang('Edit') <i class='fa fa-edit'></i></a>
-                                <a href='{{route("users.destroy" ,$row->id)}}' class='btn btn-danger'>@lang('Delete') <i class='fa fa-trash'></i></a>
+                                <a
+                                href='{{route("users.edit" ,$row->id)}}'
+                                class='btn btn-primary
+                                @if(auth()->user()->hasRole('superAdmin') == false)
+                                disabled
+                                @endif
+                                '
+                                >@lang('Edit') <i class='fa fa-edit'></i></a>
+
+                                <button type="button" id='{{$row->id}}'
+                                    class="btn btn-danger show-modal-delete
+                                    @if(auth()->user()->hasRole('superAdmin') == false)
+                                    disabled
+                                    @endif
+                                    "
+                                     data-toggle="modal" data-target="#exampleModal">
+                                    @lang('Delete')
+                                    <i class='fa fa-trash'></i>
+                                  </button>
                             </td>
                         </tr>
                         @endforeach
+                         {{-- modal delete User --}}
+                        @include('users::modal.deleteModal')
 
                     </tbody>
                 </table>
@@ -94,10 +113,33 @@
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 
+
+<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script>
 
 $(document).ready( function () {
-    $('#myTable').DataTable();
+    $('#myTable').DataTable({
+        "searching": false,
+    });
 } );
+
+$('.show-modal-delete').click(function(){
+
+    var UserId = $(this).attr('id') ;
+    var url = "{{ route('users.destroy', ':userId') }}";
+    route = url.replace(':userId', UserId);
+
+    $('#formDelete').attr('action' , route);
+});
   </script>
 @endpush

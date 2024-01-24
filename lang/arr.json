@@ -21,7 +21,33 @@
     "addSuccess":"تم الاضافه بنجاح",
     "Dash": "الرئيسة",
     "addUser": "إضافه عضو",
-    "updateSuccess": "تم الاضافه بنجاح",
+    "updateSuccess": "تم التعديل بنجاح",
+    "deleteSuccess": "تم الحذف بنجاح",
+    "sure_delete": "هل انت متأكد من حذف ",
+    "catigories": "الاقسام ",
+    "Name_en": "الاسم بالانجليزي ",
+    "catigory": "القسم ",
+    "add_product": "اضافه منتج",
+    "Products": "المنتجات",
+    "description": "الوصف",
+    "first_price": "سعر الشراء",
+    "last_price": "سعر البيع",
+    "sreialNumber": "سريال",
+    "store": "عدد",
+    "cat_id": "القسم",
+    "client": "عميل",
+    "add_client": "اضافة عميل",
+    "payment": "الدفع",
+    "cridet": "شبكة",
+    "cash": "كاش",
+    "debit": "ديون",
+
+    "order": "طلب",
+    "add_order": "اضافة طلب",
+
+
+    "cant_delete": "لا يمكن الحذف يجب ان تحذف المنتجات المربوطه بها اولا",
+
 
 
 

@@ -1,0 +1,8 @@
+.product{
+    border: 1px solid #7e7e7e;
+    padding: 11px;
+    border-radius: 20px;
+    margin: 5px ;
+    cursor: pointer;
+    background: #f3f3f3;
+}

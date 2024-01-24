@@ -49,7 +49,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+{{-- <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script> --}}
 <!-- Bootstrap 4 -->
 
 {{-- notify js --}}

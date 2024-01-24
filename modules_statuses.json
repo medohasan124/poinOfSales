@@ -1,5 +1,11 @@
 {
     "Users": true,
     "User": true,
-    "Item": true
+    "Item": true,
+    "Catigory": true,
+    "Product": true,
+    "Addproduct": true,
+    "Client": true,
+    "Order": true,
+    "Orders": true
 }

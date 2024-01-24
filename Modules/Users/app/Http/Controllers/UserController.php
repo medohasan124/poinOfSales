@@ -17,6 +17,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+     {
+        $this->middleware(['role:superAdmin']);
+
+     }
     public function index()
     {
         $Users = User::all() ;
@@ -90,7 +96,7 @@ class UserController extends Controller
 
         $user->name = $q->name ;
         $user->email = $q->email ;
-        $user->password = $q->password ;
+        $user->password = bcrypt($q->password) ;
         $user->mobile = $q->mobile ;
         $user->save() ;
 
@@ -111,6 +117,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+         //update notify
+       notify()->success(__("deleteSuccess"));
+
+       return redirect()->back() ;
+
     }
 }

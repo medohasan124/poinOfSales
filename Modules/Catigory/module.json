@@ -1,0 +1,11 @@
+{
+    "name": "Catigory",
+    "alias": "catigory",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Catigory\\app\\Providers\\CatigoryServiceProvider"
+    ],
+    "files": []
+}
